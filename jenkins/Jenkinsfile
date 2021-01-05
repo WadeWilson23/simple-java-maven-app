@@ -1,6 +1,15 @@
 pipeline {
     agent any 
     stages {
+        stage('Git Checkout') {
+            steps {
+             gitCheckout(
+                branch: "master",
+                url: "https://github.com/WadeWilson23/simple-java-maven-app.git"
+            )
+            }
+    }
+
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
